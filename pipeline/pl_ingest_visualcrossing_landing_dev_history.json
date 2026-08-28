@@ -40,7 +40,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "date",
+					"variableName": "date_list",
 					"value": {
 						"value": "@range(0, add(div(sub(ticks(pipeline().parameters.endDate),ticks(pipeline().parameters.startDate)),864000000000),1))",
 						"type": "Expression"
@@ -62,10 +62,6 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"items": {
-						"value": "@variables('date_list')",
-						"type": "Expression"
-					},
 					"batchCount": 10,
 					"activities": [
 						{
@@ -161,6 +157,9 @@
 		},
 		"variables": {
 			"date": {
+				"type": "String"
+			},
+			"date_list": {
 				"type": "Array"
 			}
 		},
