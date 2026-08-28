@@ -161,7 +161,7 @@
 		},
 		"variables": {
 			"date": {
-				"type": "String"
+				"type": "Array"
 			}
 		},
 		"folder": {
