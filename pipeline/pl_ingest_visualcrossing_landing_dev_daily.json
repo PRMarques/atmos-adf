@@ -24,7 +24,7 @@
 				}
 			},
 			{
-				"name": "visualcrossing to landing daily",
+				"name": "vopy_visualcrossing to landing",
 				"type": "Copy",
 				"dependsOn": [
 					{
