@@ -149,20 +149,9 @@
 			"city": {
 				"type": "string",
 				"defaultValue": "Itaguai"
-			},
-			"startDate": {
-				"type": "string",
-				"defaultValue": "2026-08-01"
-			},
-			"endDate": {
-				"type": "string",
-				"defaultValue": "2026-08-25"
 			}
 		},
 		"variables": {
-			"date_list": {
-				"type": "Array"
-			},
 			"date": {
 				"type": "String"
 			}
