@@ -94,11 +94,11 @@
 								"type": "Expression"
 							},
 							"date": {
-								"value": "@toLower(concat('atmos_', pipeline().parameters.city, '_', formatDateTime(utcNow(),'yyyyMMdd'),'.jason'))",
+								"value": "@variables('date')",
 								"type": "Expression"
 							},
 							"file_name": {
-								"value": "@toLower(concat('atmos_',\npipeline().parameters.city,'_',\nformatDateTime(utcNow(),'yyyy-MM-dd'),'.jason'\n))",
+								"value": "@toLower(concat('atmos_',\npipeline().parameters.city,'_',\nformatDateTime(utcNow(),'yyyyMMddHHss'),'.jason'\n))",
 								"type": "Expression"
 							}
 						}
