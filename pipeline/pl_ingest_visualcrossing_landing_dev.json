@@ -56,7 +56,10 @@
 								"value": "@pipeline().parameters.date",
 								"type": "Expression"
 							},
-							"apikey": "LKREZEF3FXAWGWSZRBFNGRCXM"
+							"apikey": {
+								"value": "@activity('web_get_apikey').output",
+								"type": "Expression"
+							}
 						}
 					}
 				],
