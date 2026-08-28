@@ -5,9 +5,11 @@
 			{
 				"name": "copy_visualcrossing to landing",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
-						"activity": "web_get_apikey",
+						"activity": "set_date_list",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -104,18 +106,50 @@
 						"resource": "https://vault.azure.net/"
 					}
 				}
+			},
+			{
+				"name": "set_date_list",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "web_get_apikey",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "date_list",
+					"value": {
+						"value": "@range(0,add(div(sub(ticks(pipeline().parameters.endDate),ticks(pipeline().parameters.startDate)),864000000000),1))",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
 			"city": {
 				"type": "string",
 				"defaultValue": "Itaguai"
+			},
+			"startDate": {
+				"type": "string"
+			},
+			"endDate": {
+				"type": "string"
 			}
 		},
 		"variables": {
-			"Date": {
-				"type": "String",
-				"defaultValue": "@utcNow('yyyy-MM-dd')"
+			"date_list": {
+				"type": "Array",
+				"defaultValue": [
+					"@utcNow('yyyy-MM-dd')"
+				]
 			}
 		},
 		"folder": {
