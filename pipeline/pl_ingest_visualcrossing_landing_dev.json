@@ -5,6 +5,8 @@
 			{
 				"name": "copy_visualcrossing to landing",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -67,7 +69,7 @@
 								"type": "Expression"
 							},
 							"file_name": {
-								"value": "@toLower(concat('atmos_',\npipeline().parameters.city,'_',\nformatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.jason'\n))",
+								"value": "@toLower(concat('atmos_',\npipeline().parameters.city,'_',\nformatDateTime(utcNow(),'yyyyMMddHHmmss'),'.jason'\n))",
 								"type": "Expression"
 							}
 						}
@@ -77,8 +79,6 @@
 			{
 				"name": "web_get_apikey",
 				"type": "WebActivity",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
