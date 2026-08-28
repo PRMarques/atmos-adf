@@ -1,12 +1,10 @@
 {
-	"name": "pl_ingest_visualcrossing_landing_dev",
+	"name": "pl_ingest_visualcrossing_landing_dev_daily",
 	"properties": {
 		"activities": [
 			{
 				"name": "copy_visualcrossing to landing",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "web_get_apikey",
@@ -113,7 +111,8 @@
 				"type": "string"
 			},
 			"date": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "@utcnow('yyyy-MM-dd')"
 			}
 		},
 		"folder": {
