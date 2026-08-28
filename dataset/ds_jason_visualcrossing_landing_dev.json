@@ -33,7 +33,8 @@
 					"type": "Expression"
 				},
 				"fileSystem": "atmos-landing-dev-01"
-			}
+			},
+			"encodingName": "UTF-8"
 		},
 		"schema": {}
 	}
