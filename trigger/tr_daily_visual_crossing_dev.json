@@ -14,10 +14,10 @@
 				"timeZone": "Bahia Standard Time",
 				"schedule": {
 					"minutes": [
-						1
+						59
 					],
 					"hours": [
-						0
+						23
 					]
 				}
 			}
