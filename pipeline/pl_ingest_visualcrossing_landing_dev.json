@@ -98,7 +98,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "GET",
-					"url": "https://kv-atmnos-dev-westus2-01.vault.azure.net/secrets/VisualCrossing-api-key-dev/190c0556bee1403a8c61db8e0d16360b?api-version=2025-07-01",
+					"url": "https://kv-atmnos-dev-westus2-01.vault.azure.net/secrets/VisualCrossing-api-key-dev/190c0556bee1403a8c61db8e0d16360b?api-version=2026-08-27",
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://vault.azure.net/"
