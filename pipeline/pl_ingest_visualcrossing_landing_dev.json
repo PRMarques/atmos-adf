@@ -67,7 +67,7 @@
 								"type": "Expression"
 							},
 							"file_name": {
-								"value": "@toLower(@concat('atmos_',\npipeline().parameters.city,'_',\nformatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.jason'\n))",
+								"value": "@toLower(concat('atmos_',\npipeline().parameters.city,'_',\nformatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.jason'\n))",
 								"type": "Expression"
 							}
 						}
