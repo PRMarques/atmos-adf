@@ -1,5 +1,5 @@
 {
-	"name": "pl_ingest_visualcrossing_landing_dev_daily_history",
+	"name": "pl_ingest_visualcrossing_landing_dev_history",
 	"properties": {
 		"activities": [
 			{
@@ -40,7 +40,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "date_list",
+					"variableName": "date",
 					"value": {
 						"value": "@range(0, add(div(sub(ticks(pipeline().parameters.endDate),ticks(pipeline().parameters.startDate)),864000000000),1))",
 						"type": "Expression"
@@ -50,6 +50,8 @@
 			{
 				"name": "foreach_date",
 				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "set_date_list",
@@ -110,7 +112,7 @@
 											"type": "Expression"
 										},
 										"date": {
-											"value": "@formatDateTime(addDays(pipeline().parameters.startDate,item()),'yyyy-MM-dd')",
+											"value": "@variables('date')",
 											"type": "Expression"
 										},
 										"apikey": {
@@ -130,7 +132,7 @@
 											"type": "Expression"
 										},
 										"date": {
-											"value": "@formatDateTime(addDays(pipeline().parameters.startDate,item()),'yyyy-MM-dd')",
+											"value": "Date",
 											"type": "Expression"
 										},
 										"file_name": {
@@ -149,6 +151,12 @@
 			"city": {
 				"type": "string",
 				"defaultValue": "Itaguai"
+			},
+			"startDate": {
+				"type": "string"
+			},
+			"endDate": {
+				"type": "string"
 			}
 		},
 		"variables": {
