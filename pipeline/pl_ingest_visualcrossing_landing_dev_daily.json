@@ -114,8 +114,10 @@
 		},
 		"variables": {
 			"date": {
-				"type": "String",
-				"defaultValue": "@utcNow('yyyy-MM-dd')"
+				"type": "Array",
+				"defaultValue": [
+					"@utcNow('yyyy-MM-dd')"
+				]
 			}
 		},
 		"folder": {
