@@ -5,6 +5,8 @@
 			{
 				"name": "copy_visualcrossing to landing",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "web_get_apikey",
@@ -57,7 +59,7 @@
 								"type": "Expression"
 							},
 							"apikey": {
-								"value": "@activity('web_get_apikey').output",
+								"value": "@activity('web_get_apikey').output.value",
 								"type": "Expression"
 							}
 						}
