@@ -158,7 +158,7 @@
 		},
 		"variables": {
 			"year_List": {
-				"type": "String"
+				"type": "Array"
 			}
 		},
 		"folder": {
