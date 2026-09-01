@@ -1,0 +1,126 @@
+{
+	"name": "pl_ingest_visualcrossing_landing_dev_daily",
+	"properties": {
+		"activities": [
+			{
+				"name": "web_get_apikey",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://kv-atmnos-dev-westus2-01.vault.azure.net/secrets/VisualCrossing-api-key-dev/190c0556bee1403a8c61db8e0d16360b?api-version=2025-07-01",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net/"
+					}
+				}
+			},
+			{
+				"name": "vopy_visualcrossing to landing",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "web_get_apikey",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_jason_visualcrossing_src_dev",
+						"type": "DatasetReference",
+						"parameters": {
+							"city": {
+								"value": "@pipeline().parameters.city",
+								"type": "Expression"
+							},
+							"date": {
+								"value": "@variables('date')",
+								"type": "Expression"
+							},
+							"apikey": {
+								"value": "@activity('web_get_apikey').output.value",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_jason_visualcrossing_landing_dev",
+						"type": "DatasetReference",
+						"parameters": {
+							"city": {
+								"value": "@pipeline().parameters.city",
+								"type": "Expression"
+							},
+							"date": {
+								"value": "@variables('date')",
+								"type": "Expression"
+							},
+							"file_name": {
+								"value": "@toLower(concat('atmos_',\npipeline().parameters.city,'_',\nformatDateTime(utcNow(),'yyyyMMddHHss'),'.jason'\n))",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"city": {
+				"type": "string",
+				"defaultValue": "Itaguai"
+			}
+		},
+		"variables": {
+			"date": {
+				"type": "String",
+				"defaultValue": "@utcNow('yyyy-MM-dd')"
+			}
+		},
+		"folder": {
+			"name": "VisualCrossing"
+		},
+		"annotations": []
+	}
+}

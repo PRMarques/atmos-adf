@@ -1,0 +1,36 @@
+{
+	"name": "tr_daily_visual_crossing_dev",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_ingest_visualcrossing_landing_dev_daily",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"city": "Itaguai"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2026-08-01T17:12:00",
+				"endTime": "2026-09-20T17:12:00",
+				"timeZone": "Bahia Standard Time",
+				"schedule": {
+					"minutes": [
+						59
+					],
+					"hours": [
+						23
+					]
+				}
+			}
+		}
+	}
+}
