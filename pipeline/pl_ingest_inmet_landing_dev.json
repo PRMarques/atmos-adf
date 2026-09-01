@@ -83,7 +83,7 @@
 								"source": {
 									"type": "GoogleBigQueryV2Source",
 									"query": {
-										"value": "@concat(\n    'SELECT * FROM `basedadosbr_irr_int_dbmep.micrados` \n    WHERE id_estacao = ''', pipeline().parameters.id_estacao,''' AND ano = ',\n    string(item())\n)\n",
+										"value": "@concat(\n    'SELECT * FROM `basedosdados.br_inmet_bdmep.microdados` \n    WHERE id_estacao = ''', pipeline().parameters.id_estacao,''' AND ano = ',\n    string(item())\n)\n",
 										"type": "Expression"
 									}
 								},
