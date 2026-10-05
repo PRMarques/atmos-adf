@@ -1,0 +1,9 @@
+{
+	"name": "adf-atmos-dev-westus2-01",
+	"properties": {
+		"globalConfigurations": {
+			"PolicyValidationEnabled": "true"
+		}
+	},
+	"location": "westus2"
+}
